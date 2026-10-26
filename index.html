@@ -107,4 +107,39 @@ $('passwordForm').addEventListener('submit',e=>{e.preventDefault();if(!session)r
 $('exportBtn').onclick=()=>{const data={products,settings,exportedAt:new Date().toISOString()};const blob=new Blob([JSON.stringify(data)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='solar-eye-backup.json';a.click();URL.revokeObjectURL(a.href)};
 $('importFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!Array.isArray(d.products)||!d.settings)throw Error();if(confirm('Import replaces the current browser data. Continue?')){products=d.products;settings=d.settings;saveProducts();saveSettings();applySettings();renderProducts();fillSettingsForm();alert('Backup imported.')}}catch(err){alert('Invalid backup file.')}e.target.value=''};r.readAsText(f)});
 </script>
+<!-- Solar Eye Shop Products -->
+<section id="products" style="padding:20px;background:#111;color:white;font-family:Arial">
+  <h2 style="text-align:center;color:#ffd400">Our Products</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:15px">
+
+    <div style="background:#222;padding:10px;border-radius:10px;text-align:center">
+      <img src="https://placehold.co/300x200?text=Solar+Panel" alt="Solar Panel" style="width:100%;border-radius:8px">
+      <h3>Solar Panels</h3>
+      <p>Contact for Price</p>
+    </div>
+
+    <div style="background:#222;padding:10px;border-radius:10px;text-align:center">
+      <img src="https://placehold.co/300x200?text=Solar+Inverter" alt="Solar Inverter" style="width:100%;border-radius:8px">
+      <h3>Solar Inverters</h3>
+      <p>Contact for Price</p>
+    </div>
+
+    <div style="background:#222;padding:10px;border-radius:10px;text-align:center">
+      <img src="https://placehold.co/300x200?text=Solar+Battery" alt="Solar Battery" style="width:100%;border-radius:8px">
+      <h3>Solar Batteries</h3>
+      <p>Contact for Price</p>
+    </div>
+
+    <div style="background:#222;padding:10px;border-radius:10px;text-align:center">
+      <img src="https://placehold.co/300x200?text=CCTV+Camera" alt="CCTV Camera" style="width:100%;border-radius:8px">
+      <h3>CCTV Cameras</h3>
+      <p>Contact for Price</p>
+    </div>
+
+  </div>
+</section>
+</body>
+</html>
+
+
 </body></html>
